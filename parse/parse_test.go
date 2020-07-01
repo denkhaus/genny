@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/cheekybits/genny/parse"
+	"github.com/denkhaus/genny/parse"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -58,6 +58,12 @@ var tests = []struct {
 		in:          `test/multipletypes/generic_simplemap.go`,
 		types:       []map[string]string{{"KeyType": "*MyType1", "ValueType": "*MyOtherType"}},
 		expectedOut: `test/multipletypes/custom_types_simplemap.go`,
+	},
+	{
+		filename:    "tags_lowercase.go",
+		in:          `test/unexported/tags_lowercase.go`,
+		types:       []map[string]string{{"TypeName": "My", "tag": "myTag"}},
+		expectedOut: `test/unexported/mytype_tags_lowercase.go`,
 	},
 	{
 		filename:    "generic_internal.go",

@@ -2,11 +2,8 @@
 // Any changes will be lost if this file is regenerated.
 // see https://github.com/denkhaus/genny
 
-package numbers
+package unexported
 
-func IntMax(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
+type MyType struct {
+	Field int `json:"myTag"`
 }
