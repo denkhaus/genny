@@ -13,8 +13,6 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
-
-	"golang.org/x/tools/imports"
 )
 
 var header = []byte(`
@@ -242,7 +240,7 @@ func Generics(filename, outputFilename, pkgName string, in io.ReadSeeker, typeSe
 		output = changePackage(bytes.NewReader([]byte(output)), pkgName)
 	}
 	// fix the imports
-	output, err = imports.Process(outputFilename, output, nil)
+	output, err = Process(output, outputFilename)
 	if err != nil {
 		return nil, &errImports{Err: err}
 	}
